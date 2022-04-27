@@ -1,5 +1,5 @@
 import { ColonyClient } from "@colony/colony-js";
-import { utils } from "ethers";
+import { BigNumber } from "ethers/utils";
 
 export const getUserAddress = async (colonyClient: ColonyClient, fundingPotId: string) => {
   const { associatedTypeId } = await colonyClient.getFundingPot(fundingPotId);
@@ -9,6 +9,9 @@ export const getUserAddress = async (colonyClient: ColonyClient, fundingPotId: s
 
 
 export const transformHexValueAmount = (hexValue: string) => {
-  const wei = new utils.BigNumber(10);
-  return new utils.BigNumber(hexValue).div(wei.pow(18)).toString();
+  const wei = new BigNumber(10);
+  return new BigNumber(hexValue).div(wei.pow(18)).toString();
 };
+
+export const transformBigNumber = (bigNumber: BigNumber) =>
+  new BigNumber(bigNumber).toString();

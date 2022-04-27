@@ -4,16 +4,16 @@ import { Log } from "ethers/providers";
 import { v4 as uuid } from 'uuid';
 
 import { getUserAddress, transformHexValueAmount } from "./utils";
-import { connectColonyClient } from "./connectColonyClient";
+import { connectClient } from "./connectClient";
 import { ColonyEventType } from "./types";
 
 export const getEventsLogs = async () => {
-  const colonyClient = await connectColonyClient();
+  const colonyClient = await connectClient();
 
   // Get the filters
   const colonyInitialisedFilter = colonyClient.filters.ColonyInitialised(null, null);
   const domainAddedFilter = colonyClient.filters.DomainAdded(null);
-  // @ts-ignore
+  // @ts-ignore-next-line
   const colonyRoleSetFilter = colonyClient.filters.ColonyRoleSet(null, null, null, null);
   const payoutClaimedFilter = colonyClient.filters.PayoutClaimed(null, null, null);
 
@@ -39,8 +39,7 @@ export const getEventsLogs = async () => {
     parsedLogs.map(async (eventLog) => {
       /**
        * Getting the date
-       * Events themselves won't provide you with a date, but there's a way of fetching it by using a method called getBlockTime, 
-       * which can be imported from @colony/colony-js:
+       * Events themselves won't provide you with a date, but there's a way of fetching it by using a method called getBlockTime
        */
       const logTime = await getBlockTime(colonyClient.provider, eventLog.blockHash || "");
 
