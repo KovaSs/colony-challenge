@@ -1,0 +1,1 @@
+export { getEventsLogs } from './getEventsLogs';

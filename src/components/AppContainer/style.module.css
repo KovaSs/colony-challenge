@@ -1,0 +1,12 @@
+.appContainer {
+  text-align: center;
+}
+
+.emptyListMessage {
+  align-items: center;
+  display: flex;
+  padding: 20px;
+  height: 100vh;
+  justify-content: center;
+  font-weight: bold;  
+}
