@@ -1,0 +1,28 @@
+{
+  "processors": [
+    "stylelint-processor-styled-components"
+  ],
+  "ignoreFiles": [
+  ],
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components",
+    "stylelint-config-sass-guidelines"
+  ],
+  "rules": {
+    "color-hex-length": "long",
+    "unit-allowed-list": ["rem", "s", "%", "deg", "vh", "vw", "fr"],
+    "selector-class-pattern": null,
+    "max-nesting-depth": 2,
+    "selector-max-compound-selectors": 10,
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": [
+          "/-styled-mixin/",
+          "$dummyValue"
+        ]
+      }
+    ]
+  }
+}
